@@ -14,8 +14,8 @@ module.exports = function(hbs){
 		
 		var partial = partials[partialName];
 
-		var renderPartial = hbs.compile(partial);
+		var renderPartial = hbs.compile(partial(context));
 
-		return renderPartial(context);
+		return renderPartial();
 	});
 };

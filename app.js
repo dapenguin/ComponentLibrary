@@ -9,17 +9,30 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var componentLibrary = require('./routes/componentLibrary');
 
-var hbs = require('hbs');
+var hbs = require('express-hbs');
+var registerPartials = require('./lib/registerPartials');
 
 var app = express();
 
 // view engine setup
+app.engine('hbs',hbs.express4({
+  defaultLayout: __dirname + '/views/layouts/layout',
+  partialsDir: __dirname + '/views/partials',
+  onCompile: function(exhbs, source, filename) {
+    var options = {
+      preventIndent: true
+    };
+    
+    return exhbs.handlebars.compile(source, options);
+  }
+}));
+
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'hbs');
 app.set('view options', {layout:'layouts/layout'});
 
-hbs.registerPartials(path.join(__dirname,'views/partials'));
+registerPartials(hbs,path.join(__dirname,'views/partials'));
 
 require('./helpers/helpers')(hbs);
 

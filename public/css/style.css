@@ -6,3 +6,19 @@ body {
 a {
   color: #00B7FF;
 }
+
+pre {
+	background: #000;
+	border-radius: 10px;
+	color: #fff;
+	padding: 10px;
+}
+
+.componentBlock {
+	margin: 0 0 30px;
+}
+
+.componentHeader {
+	border-bottom: 1px solid #999;
+	margin: 0 0 10px;
+}

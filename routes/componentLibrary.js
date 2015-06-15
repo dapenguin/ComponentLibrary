@@ -7,14 +7,16 @@ router.get('/', function(req, res, next) {
 		title: 'Component Library',
 		components: [
 			{
-				name: 'header',
-				description: 'The main site header',
+				id: 'header',
+				name: 'Header',
+				description: '<p>The main site header</p>',
 				partial: 'header',
 				data: {}
 			},
 			{
-				name: 'product',
-				description: 'A product',
+				id: 'product',
+				name: 'Product',
+				description: '<p>A product</p>',
 				partial: 'product',
 				data: {
 					name: 'Beer',

@@ -1,4 +1,14 @@
 <h1>Component Library</h1>
+<h2>Contents</h2>
+<nav>
+	<ul>
+		{{#each components}}
+		<li>
+			<a href="#{{id}}">{{name}}</a>
+		</li>
+		{{/each}}
+	</ul>
+</nav>
 {{#each components}}
 	{{> component}}
 {{/each}}

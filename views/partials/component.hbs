@@ -1,7 +1,11 @@
-<h2>{{name}}</h2>
-{{description}}
-{{{dynamicPartial partial data}}}
-<h3>Heres the code for this component</h3>
-{{#codeBlock this}}
+<div id="{{id}}" class="componentBlock">
+	<div class="componentHeader">
+		<h2>{{name}}</h2>
+		{{{description}}}
+	</div>
 	{{{dynamicPartial partial data}}}
-{{/codeBlock}}
+	<h3>Here's the code for this component</h3>
+	{{#codeBlock this}}
+		{{{dynamicPartial partial data}}}
+	{{/codeBlock}}
+</div>
