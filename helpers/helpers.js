@@ -1,6 +1,9 @@
 module.exports = function(hbs){
 	hbs.registerHelper('codeBlock',function(code,options){
+		var beautify = require('js-beautify');
 		var content = options.fn(code);
+
+		content = beautify.html(content);
 
 		var codeContent = '<pre>' + hbs.Utils.escapeExpression(content) + '</pre>'
 		return codeContent;
