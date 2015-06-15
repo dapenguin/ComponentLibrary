@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var componentLibrary = require('./routes/componentLibrary');
 
 var hbs = require('hbs');
 
@@ -15,17 +16,12 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
+app.set('view engine', 'hbs');
+app.set('view options', {layout:'layouts/layout'});
+
 hbs.registerPartials(path.join(__dirname,'views/partials'));
 
-// hbs.registerHelper('codeBlock',function(code,options){
-//   var content = options.fn(code);
-//   var codeContent = '<pre>' + hbs.Utils.escapeExpression(content) + '</pre>'
-//   return codeContent;
-// });
-
-require('./helpers/helpers.js');
-
-app.set('view engine', 'hbs');
+require('./helpers/helpers')(hbs);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -37,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/cl', componentLibrary);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
