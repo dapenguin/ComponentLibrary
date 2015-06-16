@@ -1,9 +1,30 @@
+{{!
+Markup for an individual component in our style guide.
+Expects the following data:
+
+id:          A unique identifier for the component. Main use is for creating a
+             location on the page we can jump to.
+name:        The name of the component.
+description: A description of the component.
+partial:     The name of the partial we use for rendering the component.
+data:        An object containing the data to be passed to the partial for the
+             component being displayed.
+}}
+
 <div id="{{id}}" class="componentBlock">
 	<div class="componentHeader">
 		<h2>{{name}}</h2>
+
+		{{! This description should contain the mark-up needed for styling, hence
+		    why we don't have it wrapped inside a <p> tag.
+		}}
 		{{{description}}}
 	</div>
+
+	{{! Output the partial for the component }}
 	{{{dynamicPartial partial data}}}
+
+	{{! Output the mark-up for the component within a code block }}
 	<h3>Here's the code for this component</h3>
 	{{#codeBlock this}}
 		{{{dynamicPartial partial data}}}
