@@ -4,6 +4,12 @@ module.exports = function(grunt){
     require("time-grunt")(grunt);
 
     grunt.initConfig({
+        concurrent: {
+            tasks: ['devNodemon','devWatch'],
+            options: {
+                logConcurrentOutput: true
+            }
+        },
         nodemon: {
             dev: {
                 script: './bin/www',
@@ -12,18 +18,17 @@ module.exports = function(grunt){
                 }
             }
         },
-        /*sass: {
+        sass: {
 	    	options: {
 		    	outputStyle: 'nested'
 		    },
     		dev: {
 			    files: {
-			    	'css/main.css':'sass/main.scss',
-			    	'css/main-ie8.css':'sass/main-ie8.scss'
+			    	'public/css/componentLibrary.css':'sass/componentLibrary.scss'
 			    }
 		    }
     	},
-        postcss: {
+        /*postcss: {
             options: {
                 processors: [
                     autoprefixer(
@@ -78,13 +83,13 @@ module.exports = function(grunt){
 
     grunt.registerTask('buildCss', [], function(){
         grunt.loadNpmTasks('grunt-sass');
-        grunt.loadNpmTasks('grunt-bytesize');
-        grunt.loadNpmTasks('grunt-contrib-cssmin');
-        grunt.loadNpmTasks('grunt-postcss');
+        //grunt.loadNpmTasks('grunt-bytesize');
+        //grunt.loadNpmTasks('grunt-contrib-cssmin');
+        //grunt.loadNpmTasks('grunt-postcss');
         grunt.task.run('sass:dev');
-        grunt.task.run('postcss');
-        grunt.task.run('cssmin:dev');
-        grunt.task.run('bytesize');
+        //grunt.task.run('postcss');
+        //grunt.task.run('cssmin:dev');
+        //grunt.task.run('bytesize');
     });
 
     grunt.registerTask('serve', [], function(){
@@ -93,10 +98,20 @@ module.exports = function(grunt){
         grunt.task.run('http-server');
         grunt.task.run('watch');
     });
-    
-    grunt.registerTask('dev', [], function(){
+
+    grunt.registerTask('devNodemon', [], function(){
         grunt.loadNpmTasks('grunt-nodemon');
         grunt.task.run('nodemon');
+    });
+    
+    grunt.registerTask('devWatch', [], function(){
+        grunt.loadNpmTasks('grunt-contrib-watch');
+        grunt.task.run('watch');
+    });
+
+    grunt.registerTask('dev', [], function(){
+        grunt.loadNpmTasks('grunt-concurrent');
+        grunt.task.run('concurrent');
     });
 
     grunt.registerTask('default', []);
