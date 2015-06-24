@@ -24,7 +24,8 @@ module.exports = function(grunt){
 		    },
     		dev: {
 			    files: {
-			    	'public/css/componentLibrary.css':'sass/componentLibrary.scss'
+                    'public/css/componentLibrary.css':'sass/componentLibrary.scss',
+                    'public/css/style.css':'sass/style.scss'
 			    }
 		    }
     	},
