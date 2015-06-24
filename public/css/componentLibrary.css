@@ -1,16 +1,48 @@
-body {
-  padding: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+.clBody {
+  margin: 0;
+  padding: 0; }
 
-pre {
+.clLibraryHeader {
+  background: #fff;
+  border-bottom: 2px solid #555;
+  padding: 10px; }
+  .clLibraryHeader h1 {
+    color: #222;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center; }
+
+.clLibraryBody {
+  padding: 10px; }
+
+.clLibraryMenu {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 0 0 30px;
+  padding: 10px; }
+  .clLibraryMenu h2 {
+    margin: 0 0 1em; }
+  .clLibraryMenu a {
+    color: #222; }
+
+.clComponentCode {
   background: #000;
   border-radius: 10px;
   color: #fff;
   padding: 10px; }
 
+.js .clHideCode {
+  display: none; }
+
 .clComponentBlock {
   margin: 0 0 30px; }
 
 .clComponentHeader {
+  margin: 0 0 10px; }
+  .clComponentHeader .clComponentName {
+    display: inline-block;
+    margin: 0 1em 0 0; }
+
+.clComponentDescription {
   border-bottom: 1px solid #999;
   margin: 0 0 10px; }
