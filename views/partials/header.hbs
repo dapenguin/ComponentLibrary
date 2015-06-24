@@ -1,1 +1,12 @@
-<header>Here is the header</header>
+<header>
+	<p class="siteName">Site name</p>
+	<nav>
+		<ul>
+			{{#each navItems}}
+				<li>
+					<a href="{{href}}">{{text}}</a>
+				</li>
+			{{/each}}
+		</ul>
+	</nav>
+</header>

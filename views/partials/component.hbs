@@ -13,8 +13,18 @@ data:        An object containing the data to be passed to the partial for the
 
 <div id="{{id}}" class="clComponentBlock">
 	<div class="clComponentHeader">
-		<h2>{{name}}</h2>
+		<h2 class="clComponentName">{{name}}</h2>
+		<a href="#{{id}}_clCode" class="clComponentShowCode">Show code</a>
+	</div>
 
+	{{! Output the mark-up for the component within a code block }}
+	<pre id="{{id}}_clCode" class="clComponentCode clHideCode">
+	{{#codeBlock this}}
+		{{{dynamicPartial partial data}}}
+	{{/codeBlock}}
+	</pre>
+
+	<div class="clComponentDescription">
 		{{! This description should contain the mark-up needed for styling, hence
 		    why we don't have it wrapped inside a <p> tag.
 		}}
@@ -23,10 +33,4 @@ data:        An object containing the data to be passed to the partial for the
 
 	{{! Output the partial for the component }}
 	{{{dynamicPartial partial data}}}
-
-	{{! Output the mark-up for the component within a code block }}
-	<h3>Here's the code for this component</h3>
-	{{#codeBlock this}}
-		{{{dynamicPartial partial data}}}
-	{{/codeBlock}}
 </div>

@@ -1,0 +1,12 @@
+<div class="field">
+	<div class="indicator">
+		<label for="{{id}}">{{label}}</label>
+	</div>
+	<div class="input">
+		{{#if value}}
+			<input type="{{type}}" id="{{id}}" name="{{name}}" value="{{value}}" />
+		{{else}}		
+			<input type="{{type}}" id="{{id}}" name="{{name}}" />
+		{{/if}}
+	</div>
+</div>

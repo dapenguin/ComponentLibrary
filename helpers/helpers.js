@@ -5,7 +5,8 @@ module.exports = function(hbs){
 
 		content = beautify.html(content);
 
-		var codeContent = '<pre>' + hbs.Utils.escapeExpression(content) + '</pre>'
+		//var codeContent = '<pre>' + hbs.Utils.escapeExpression(content) + '</pre>';
+		var codeContent = hbs.Utils.escapeExpression(content);
 		return codeContent;
 	});
 
