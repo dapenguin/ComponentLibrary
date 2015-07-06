@@ -40,8 +40,6 @@ router.get('/', function(req, res, next) {
 		]
 	};
 
-	//console.log(productListData);
-
 	res.render('pages/componentLibrary', data);
 });
 

@@ -28,6 +28,8 @@ app.engine('hbs',hbs.express4({
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'hbs');
+
+// Set the default layout
 app.set('view options', {layout:'layouts/layout'});
 
 registerPartials(hbs,path.join(__dirname,'views/partials'));
