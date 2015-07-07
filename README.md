@@ -32,7 +32,7 @@ There are 3 folders for organizing data for your pages and components:
 
 For each page, you can provide the template with data in the form of an object that can include the following properties:
 
-* **title** - The title of the page that will appear within the <title> tag. If you have any text and separators that normally appear after the title for that page, they should be included in the layout template.
+* **title** - The title of the page that will appear within the `<title>` tag. If you have any text and separators that normally appear after the title for that page, they should be included in the layout template.
 * **layout** - What layout template to use for this page. If not provided, then the default layout (defined in app.js) will be used.
 
 ## Views
