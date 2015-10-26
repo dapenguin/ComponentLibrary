@@ -64,15 +64,15 @@ Inside the Handlebars file you have created, add whatever mark-up is needed for 
 
 Inside the relevant route file for the site, add the following:
 
-	router.get('/<page-url>', function(req, res, next) {
+	router.get('/[page-url]', function(req, res, next) {
 		var data = {
-			title: '<page-title>',
+			title: '[page-title]',
 			layout: ''
 		};
 
-		res.render('pages/<handlebars-page-name>', data);
+		res.render('pages/[handlebars-page-name]', data);
 	});
 
-* **<page-url>** - The URL to access this page. This is relevant to the route for the route file you are in. So if the route for the route file is */checkout*, replacing <page-url> with */address* will make the URL for the page */checkout/address*.
-* **<page-title>** - The title of the page that will appear within the <title> tag.
-* **<handlebars-page-name>** - The path to the Handlebars file for the page, without the .hbs extension.
+* **[page-url]** - The URL to access this page. This is relevant to the route for the route file you are in. So if the route for the route file is */checkout*, replacing <page-url> with */address* will make the URL for the page */checkout/address*.
+* **[page-title]** - The title of the page that will appear within the <title> tag.
+* **[handlebars-page-name]** - The path to the Handlebars file for the page, without the .hbs extension.
