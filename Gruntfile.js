@@ -14,7 +14,7 @@ module.exports = function(grunt){
             dev: {
                 script: './bin/www',
                 options: {
-                    watch: ['bin','lib','helpers','routes','views','app.js']
+                    watch: ['bin','data','lib','helpers','routes','views','app.js']
                 }
             }
         },
