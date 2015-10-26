@@ -1,0 +1,3 @@
+# Files to always ignore
+node_modules
+npm-debug.log

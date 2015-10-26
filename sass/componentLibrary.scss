@@ -1,0 +1,80 @@
+///////////////////////////////////////////////////////////////////////////////
+// This is the main .scss file for styling the component library itself.
+// 
+// It should only be used for styling components that are specific to the
+// component library. Any styling for components that are used in your site/app
+// should go in a separate file.
+// 
+// Within this file, great care should be taken to ensure that styles for your
+// site/app are not overridden. Therefore, it is recommended that elements are
+// styled using classes, as opposed to targeting the element by name. So, for
+// example, if you have links that need to be styled in a specific way for the
+// component library itself, do not apply styling to the <a> tag itself, but
+// rather use something like .clLink.
+///////////////////////////////////////////////////////////////////////////////
+
+.clBody {
+	margin: 0;
+	padding: 0;
+}
+
+.clLibraryHeader {
+	background: #fff;
+	border-bottom: 2px solid #555;
+	padding: 10px;
+
+	h1 {
+		color: #222;
+		font-size: 2em;
+		font-weight: bold;
+		text-align: center;
+	}
+}
+
+.clLibraryBody {
+	padding: 10px;
+}
+
+.clLibraryMenu {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	margin: 0 0 30px;
+	padding: 10px;
+
+	h2 {
+		margin: 0 0 1em;
+	}
+
+	a {
+		color: #222;
+	}
+}
+
+.clComponentCode {
+	background: #000;
+	border-radius: 10px;
+	color: #fff;
+	padding: 10px;
+}
+
+.js .clHideCode {
+	display: none;
+}
+
+.clComponentBlock {
+	margin: 0 0 30px;
+}
+
+.clComponentHeader {
+	margin: 0 0 10px;
+
+	.clComponentName {
+		display: inline-block;
+		margin: 0 1em 0 0;
+	}
+}
+
+.clComponentDescription {
+	border-bottom: 1px solid #999;
+	margin: 0 0 10px;
+}

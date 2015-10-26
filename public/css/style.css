@@ -1,0 +1,69 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+header {
+  background: #639; }
+  header .siteName {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+    padding: 1em 0;
+    text-align: center; }
+  header ul {
+    border-top: 1px solid #a384c1;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center; }
+  header li {
+    display: inline-block;
+    padding: 10px 20px; }
+  header a {
+    color: #fff; }
+
+a {
+  color: #00B7FF; }
+
+/* -----------------------------------------------------------------------------*/
+/* BUTTONS
+/* -----------------------------------------------------------------------------*/
+.primaryButton, .secondaryButton, .tertiaryButton {
+  background: #639;
+  border: 1px solid #639;
+  border-radius: 15px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 1.4em;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 2px 20px 3px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-appearance: none;
+  white-space: nowrap; }
+  .primaryButton:hover,
+  .secondaryButton:hover,
+  .tertiaryButton:hover,
+  .primaryButton:active,
+  .secondaryButton:active,
+  .tertiaryButton:active,
+  .primaryButton:focus, .secondaryButton:focus, .tertiaryButton:focus {
+    text-decoration: none; }
+
+/* Needed to remove extra padding included by Firefox */
+input.primaryButton::-moz-focus-inner, input.secondaryButton::-moz-focus-inner, input.tertiaryButton::-moz-focus-inner {
+  border: none;
+  padding: 0; }
+
+.secondaryButton {
+  background: #fff;
+  color: #639; }
+
+.tertiaryButton {
+  background: #000;
+  border: 1px solid #000; }

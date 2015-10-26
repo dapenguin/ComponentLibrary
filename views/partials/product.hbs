@@ -1,0 +1,13 @@
+<li class="product">
+	<h3>{{name}}</h3>
+	<p class="price">{{price}}</p>
+	{{#if promotions}}
+		<ul class="promotions">
+			{{#each promotions}}
+				<li>
+					<a href="#">{{this}}</a>
+				</li>
+			{{/each}}
+		</ul>
+	{{/if}}
+</li>
