@@ -61,11 +61,7 @@ All Handlebars files (.hbs) are kept in the following folders:
 ## Adding components to the Component Library
 
 
-## Documenting the Component Library
-
-*WIP - What should always be included in the comments for components and pages*
-
-### Handlebars templates
+## Documenting your Handlebars templates
 
 At the top of each Handlebars file, include a block comment `{{! comment goes here }}` and include the following information:
 
@@ -75,6 +71,35 @@ At the top of each Handlebars file, include a block comment `{{! comment goes he
 	+ Property name
 	+ Type (i.e. String, Boolean, Array, etc.)
 	+ What the property is used for
+
+So if we take a Handlebars file containing the mark-up for the main header on the site, it should look like this:
+
+	{{!
+	The global header for the site, including the navigation menu.
+
+	Used on all pages within the site.
+
+	Data
+	====
+	siteName      {String}  The name of the website, displayed across at the top of
+	                        the header.
+	navItems      {Array}   The items to be displayed in the navigation menu.
+	navItems.href {String}  The URL the navigation item points to.
+	navItems.text {String}  The text to be displayed for the navigation item.
+	}}
+
+	<header>
+		<p class="siteName">{{siteName}}</p>
+		<nav>
+			<ul>
+				{{#each navItems}}
+					<li>
+						<a href="{{href}}">{{text}}</a>
+					</li>
+				{{/each}}
+			</ul>
+		</nav>
+	</header>
 
 ## Creating a new site
 

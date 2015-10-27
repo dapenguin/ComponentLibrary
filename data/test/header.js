@@ -1,5 +1,5 @@
 module.exports = {
-	siteName: 'Site name',
+	siteName: 'Website name',
 	navItems: [
 		{
 			text: 'Products',
