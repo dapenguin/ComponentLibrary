@@ -25,11 +25,13 @@ app.engine('hbs',hbs.express4({
   }
 }));
 
+// Tell express where to find our views
 app.set('views', path.join(__dirname, 'views'));
 
+// Tell express we are using the Handlebars view engine
 app.set('view engine', 'hbs');
 
-// Set the default layout
+// Set the default layout for our pages
 app.set('view options', {layout:'layouts/layout'});
 
 registerPartials(hbs,path.join(__dirname,'views/partials'));

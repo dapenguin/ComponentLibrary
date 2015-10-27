@@ -1,6 +1,19 @@
 # ComponentLibrary
 Component Library running on Express
 
+## Installing
+
+To install this component library:
+
+1. Create a directory for the application to sit in.
+2. Inside that directory, use Git to clone this repository by typing the following into the command line:
+
+		git clone https://github.com/dapenguin/component-library.git
+
+## Running
+
+
+
 ## Folder structure
 
 ```
@@ -43,12 +56,32 @@ All Handlebars files (.hbs) are kept in the following folders:
 
 * **/layouts** - Templates for different page layouts, such as single column, double column, with a sidebar, etc.
 * **/pages** - Individual pages, such as homepage, login, product details, etc.
-* **/partials** - Templates for individual components, such as header, carousel, tabset, etc.
+* **/partials** - Templates for individual components, such as header, carousel, tab set, etc.
+
+## Adding components to the Component Library
+
+
+## Documenting the Component Library
+
+*WIP - What should always be included in the comments for components and pages*
+
+### Handlebars templates
+
+At the top of each Handlebars file, include a block comment `{{! comment goes here }}` and include the following information:
+
+* What the template is used for.
+* If it is a component, what pages it can be found in.
+* What data it expects. For each data property, include the following:
++ Property name
++ Type (i.e. String, Boolean, Array, etc.)
++ What the property is used for
 
 ## Creating a new site
 
 Create a route file for the site inside the *routes* folder.
+
 Create a folder for the site inside the *routes* folder with the same name as the route file you created above. This is where you can keep any routes associated with that site.
+
 Reference the route file inside *lib/setupRoutes.js*.
 
 
@@ -67,7 +100,7 @@ Inside the relevant route file for the site, add the following:
 	router.get('/[page-url]', function(req, res, next) {
 		var data = {
 			title: '[page-title]',
-			layout: ''
+			layout: '[layout]'
 		};
 
 		res.render('pages/[handlebars-page-name]', data);
@@ -75,4 +108,5 @@ Inside the relevant route file for the site, add the following:
 
 * **[page-url]** - The URL to access this page. This is relevant to the route for the route file you are in. So if the route for the route file is */checkout*, replacing <page-url> with */address* will make the URL for the page */checkout/address*.
 * **[page-title]** - The title of the page that will appear within the `<title>` tag.
+* **[layout]** - This property is optional. The name of the layout to use for this page. If omitted, will use the default layout as defined in the app.js file. 
 * **[handlebars-page-name]** - The path to the Handlebars file for the page, without the .hbs extension.
