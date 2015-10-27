@@ -9,10 +9,15 @@ To install this component library:
 2. Inside that directory, use Git to clone this repository by typing the following into the command line:
 
 		git clone https://github.com/dapenguin/component-library.git
+3. Run `npm install` from the command line to install any node modules needed.
 
 ## Running
 
+To run the component library, simply type the following into the command line:
 
+	grunt dev
+
+Then point your browser to `http://localhost:3000/cl`.
 
 ## Folder structure
 
@@ -44,11 +49,6 @@ There are 3 folders for organizing data for your pages and components:
 * **/test** - Place data for test scripts in here
 * **/master** - Where we keep a master copy of data for development
 * **/dev** - Your playpit to store any data for anything currently in development
-
-For each page, you can provide the template with data in the form of an object that can include the following properties:
-
-* **title** - The title of the page that will appear within the `<title>` tag. If you have any text and separators that normally appear after the title for that page, they should be included in the layout template.
-* **layout** - What layout template to use for this page. If not provided, then the default layout (defined in app.js) will be used.
 
 ## Views
 
@@ -132,6 +132,6 @@ Inside the relevant route file for the site, add the following:
 	});
 
 * **[page-url]** - The URL to access this page. This is relevant to the route for the route file you are in. So if the route for the route file is */checkout*, replacing <page-url> with */address* will make the URL for the page */checkout/address*.
-* **[page-title]** - The title of the page that will appear within the `<title>` tag.
+* **[page-title]** - The title of the page that will appear within the `<title>` tag. If you have any text and separators that normally appear after the title for that page, they should ideally be included in the layout template, purely to avoid having to type them out for every page.
 * **[layout]** - This property is optional. The name of the layout to use for this page. If omitted, will use the default layout as defined in the app.js file. 
 * **[handlebars-page-name]** - The path to the Handlebars file for the page, without the .hbs extension.
