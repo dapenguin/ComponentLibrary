@@ -72,9 +72,9 @@ At the top of each Handlebars file, include a block comment `{{! comment goes he
 * What the template is used for.
 * If it is a component, what pages it can be found in.
 * What data it expects. For each data property, include the following:
-+ Property name
-+ Type (i.e. String, Boolean, Array, etc.)
-+ What the property is used for
+	+ Property name
+	+ Type (i.e. String, Boolean, Array, etc.)
+	+ What the property is used for
 
 ## Creating a new site
 
