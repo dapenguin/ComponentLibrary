@@ -40,7 +40,7 @@ views
 
 Routes are where we tell the application how to handle different URLs.
 
-You can create routes for different request types, such as GET and POST. 
+You can create routes for different request types, such as GET and POST.
 
 ## Working with data
 
