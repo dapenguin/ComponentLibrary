@@ -2,7 +2,7 @@
   "name": "component-library",
   "version": "0.0.1",
   "description": "Component Library using Express",
-  "main": "app.js",
+  "main": "./bin/www",
   "scripts": {
     "start": "node ./bin/www"
   },
