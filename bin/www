@@ -29,8 +29,10 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
-server.listen(port,ip);
+console.log('setup server');
+server.listen(port,ip,function(){
+  console.log('Server is listening on port: ' + port + ' and ip: ' + ip);
+});
 server.on('error', onError);
 server.on('listening', onListening);
 
