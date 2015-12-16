@@ -23,13 +23,11 @@ app.set('ip', ip);
 /**
  * Create HTTP server.
  */
-
 var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-console.log('setup server');
 server.listen(port,ip,function(){
   console.log('Server is listening on port: ' + port + ' and ip: ' + ip);
 });
