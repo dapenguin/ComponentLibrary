@@ -5,7 +5,7 @@ var headerData = require('../data/test/header.js');
 var productListData = require('../data/test/productList.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/cl', function(req, res, next) {
 	var data = {
 		title: 'Component Library',
 		components: [
