@@ -12,7 +12,7 @@ module.exports = function(grunt){
         },
         nodemon: {
             dev: {
-                script: './bin/www',
+                script: './app/bin/www',
                 options: {
                     watch: ['bin','data','lib','helpers','routes','views','app.js']
                 }

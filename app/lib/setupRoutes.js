@@ -22,7 +22,7 @@ var setupRoutes = function(app, routesFolder){
 		// Make sure it's a JavaScript file
 		if (path.extname(filenames[i]) === '.js'){
 			// Load the file as a Node module and mount it from the root
-			app.use('/', require(path.join(routesFolder,filenames[i]));
+			app.use('/', require(path.join(routesFolder,filenames[i])));
 		}
 	}
 };
