@@ -1,3 +1,17 @@
+/**
+ * Takes a task name and an alias, and returns a string for running that
+ * combination.
+ * @param  {String} task  Name of the task to run.
+ * @param  {String} alias Alias of the specified task we want to run.
+ * @return {String}       The string for running the specified combination.
+ */
+var getTask = function(task,alias){
+    if (alias) {
+        task += ':' + alias;
+    }
+    return task;
+};
+
 module.exports = function(grunt){
     //var autoprefixer = require('autoprefixer-core');
 
@@ -11,10 +25,18 @@ module.exports = function(grunt){
             }
         },
         nodemon: {
-            dev: {
+            default: {
                 script: './app/bin/www',
                 options: {
-                    watch: ['bin','data','lib','helpers','routes','views','app.js']
+                    ext: 'js,hbs',
+                    watch: ['app','src']
+                }
+            },
+            second: {
+                script: './app/bin/www second',
+                options: {
+                    ext: 'js,hbs',
+                    watch: ['app','src']
                 }
             }
         },
@@ -24,8 +46,8 @@ module.exports = function(grunt){
 		    },
     		dev: {
 			    files: {
-                    'public/css/componentLibrary.css':'sass/componentLibrary.scss',
-                    'public/css/style.css':'sass/style.scss'
+                    'app/public/css/componentLibrary.css':'src/default/componentLibrary.scss',
+                    'app/public/css/style.css':'src/default/style.scss'
 			    }
 		    }
     	},
@@ -76,7 +98,7 @@ module.exports = function(grunt){
         },
     	watch: {
     		css: {
-	    		files: ['sass/*.scss','sass/**/*.scss'],
+	    		files: ['src/*.scss','src/**/*.scss'],
 	    		tasks: ['buildCss']
             }
     	}
@@ -100,9 +122,11 @@ module.exports = function(grunt){
         grunt.task.run('watch');
     });
 
-    grunt.registerTask('devNodemon', [], function(){
+    grunt.registerTask('devNodemon', [], function(alias){
+        var nodemonTask = getTask('nodemon',alias);
+
         grunt.loadNpmTasks('grunt-nodemon');
-        grunt.task.run('nodemon');
+        grunt.task.run(nodemonTask);
     });
     
     grunt.registerTask('devWatch', [], function(){
