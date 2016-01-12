@@ -15,7 +15,7 @@ CL.codeRevealer = function(){
 			codeBlockElem = document.getElementById(codeBlockId);
 
 		event.preventDefault();
-		console.log(codeBlockId);
+
 		if (codeBlockElem){
 			if (CL.hasClass(codeBlockElem,_config.hideClass)){
 				CL.removeClass(codeBlockElem,_config.hideClass);

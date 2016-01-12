@@ -8,6 +8,7 @@ var productListData = require('../data/test/productList.js');
 router.get('/cl', function(req, res, next) {
 	var data = {
 		title: 'Component Library',
+		layout: 'layout',
 		components: [
 			{
 				id: 'header',

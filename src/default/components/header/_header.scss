@@ -1,0 +1,29 @@
+header {
+	background: #639;
+
+	.siteName {
+		color: #fff;
+		font-size: 1.5em;
+		font-weight: bold;
+		margin: 0;
+		padding: 1em 0;
+		text-align: center;
+	}
+
+	ul {
+		border-top: 1px solid #a384c1;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+	}
+
+	li {
+		display: inline-block;
+		padding: 10px 20px;
+	}
+
+	a {
+		color: #fff;
+	}
+}

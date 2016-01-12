@@ -16,8 +16,8 @@ var srcFolder = path.join(__dirname, '../src', (process.argv[2] || 'default'));
 
 // view engine setup
 app.engine('hbs',hbs.express4({
-  defaultLayout: path.join(srcFolder, 'layouts/layout'),
-  partialsDir: path.join(srcFolder, 'partials'),
+  defaultLayout: path.join(srcFolder, 'layouts/default'),
+  partialsDir: path.join(srcFolder, 'components'),
   layoutsDir: path.join(srcFolder, 'layouts'),
   onCompile: function(exhbs, source, filename) {
     var options = {
@@ -35,9 +35,9 @@ app.set('views', srcFolder);
 app.set('view engine', 'hbs');
 
 // Set the default layout for our pages
-app.set('view options', {layout:'layouts/layout'});
+app.set('view options', {layout:'layouts/default'});
 
-registerPartials(hbs,path.join(srcFolder,'partials'));
+registerPartials(hbs,path.join(srcFolder,'components'));
 
 require('./helpers/helpers')(hbs);
 
@@ -47,7 +47,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 setupRoutes(app, path.join(srcFolder, 'routes'));
 

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html class="noJs">
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/css/style.css' />
+  </head>
+  <body {{#if bodyId}}id="{{bodyId}}"{{/if}} {{#if bodyClass}}class="{{bodyClass}}"{{/if}}>
+  	{{> header headerData}}
+    {{{body}}}
+    {{> footer}}
+  </body>
+</html>
