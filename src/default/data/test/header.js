@@ -3,7 +3,7 @@ module.exports = {
 	navItems: [
 		{
 			text: 'Products',
-			href: '#'
+			href: 'plp'
 		},
 		{
 			text: 'Services',

@@ -1,0 +1,24 @@
+.paginationBar {
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	overflow: hidden;
+	padding: .5em 10px;
+}
+
+.paginationSort {
+	float: left;
+
+	li {
+		display: inline-block;
+		margin: 0 .25em;
+	}
+}
+
+.paginationPages {
+	float: right;
+
+	li {
+		display: inline-block;
+		margin: 0 .25em;
+	}
+}

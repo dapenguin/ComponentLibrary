@@ -69,3 +69,21 @@ footer {
   footer li {
     display: inline-block;
     padding: 0 20px; }
+
+.paginationBar {
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  overflow: hidden;
+  padding: .5em 10px; }
+
+.paginationSort {
+  float: left; }
+  .paginationSort li {
+    display: inline-block;
+    margin: 0 .25em; }
+
+.paginationPages {
+  float: right; }
+  .paginationPages li {
+    display: inline-block;
+    margin: 0 .25em; }
