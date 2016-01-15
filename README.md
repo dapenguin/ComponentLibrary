@@ -15,51 +15,80 @@ To install this component library:
 
 To run the component library, simply type the following into the command line:
 
-	grunt dev
+`grunt dev`
 
-Then point your browser to `http://localhost:3000/cl`.
+This will run a grunt task that watches for two types of changes:
+* Changes to .hbs and .js files - Any changes to these files in the **app** and **src** folders will restart the component library application.
+* Changed to .scss files - This will trigger the task for compiling the Sass into CSS.
+
+By default, this task works only with the default site folder. With a little bit of configuration in Gruntfile.js (to be documented later), you can specify which site you want to work on by running the following from the command line:
+
+`grunt dev:siteName`
+
+Then point your browser to `http://localhost:3000/cl` to see the component library itself. To view any other pages you've set up, simply point your browser to `http://localhost:3000/`, followed by the page name specified in the routes files. For example, to view the Home page, point your browser to `http://localhost:3000/home`.
 
 ## Folder structure
 
+The following is how the folders are structured for the component library:
+
 ```
-data
-|---dev
-|---master
-+---test
-helpers
-lib
-public
-routes
-views
-|---layouts
-|---pages
-+---partials
+app
+src
++-- default/
+|   +-- components/
+|   |   +-- buttons/
+|   |   |   +-- _buttons.scss
+|   |   |   +-- buttons.hbs
+|   |   +-- paginationBar/
+|   |   |   +-- _paginationBar.scss
+|   |   |   +-- paginationBar.hbs
+|   |   +-- productTile/
+|   |       +-- _productTile.scss
+|   |       +-- productTile.hbs
+|   |
+|   +-- data/
+|   +-- layouts/
+|   +-- pages/
+|   |   +-- home/
+|   |   |   +-- _home.scss
+|   |   |   +-- home.hbs
+|   |   +-- pdp/
+|   |   |   +-- _pdp.scss
+|   |   |   +-- pdp.hbs
+|   |   +-- plp/
+|   |       +-- _plp.scss
+|   |       +-- plp.hbs
+|   |
+|   +-- routes/
+|   |   +-- home.route.js
+|   |   +-- pdp.route.js
+|   |   +-- plp.route.js
+|   |
+|   +-- sass/
+|       +-- _mixins.scss
+|       +-- _reset.scss
+|       +-- _variables.scss
+|       +-- main.scss
+|
++-- otherSite/
+    ...
+    ...
 ```
+
+* **app** - Files for the core component library application live here. Unless a fix/updated is needed, you shouldn't be updating the files in this folder.
+* **src** - Files that we update to maintain our pages and components in the library live here. These will be contained in separate folders for each site we look after, such as desktop and mobile. If we are ever asked to redesign the site, this will allow us to work separately from the existing source files. Within these folders, our files will be separated into:
+	+ **components** - Files for the individual components that are used on the site (e.g. buttons, fields, overlays, etc.)
+	+ **data** - Files containing data for use in pages and the component library.
+	+ **layout** - Files that specify our different page layouts. (e.g. with a sidebar, without a sidebar, enclosed header, etc.) The default and most commonly used layout should be named default.hbs.
+	+ **routes** - Any files for handling routing should be stored here. The component library will automatically set up any routes defined in this folder.
+	+ **pages** - Files for the specific pages on the site (e.g. homepage, favourites, product details page, etc.)
+	Each of the above will contain folders for each layout/page/component. These folders will ideally contain the Sass, Handlebars, test spec and JavaScript files for the layout/page/component. The thinking behind this is that it encourages a modular approach to how we code. For example, the _paginationBar.scss file should only contain code for styling what is in the pagination.hbs file.
 
 ## Routes
 
 Routes are where we tell the application how to handle different URLs.
 
-You can create routes for different request types, such as GET and POST.
-
-## Working with data
-
-There are 3 folders for organizing data for your pages and components:
-
-* **/test** - Place data for test scripts in here
-* **/master** - Where we keep a master copy of data for development
-* **/dev** - Your playpit to store any data for anything currently in development
-
-## Views
-
-All Handlebars files (.hbs) are kept in the following folders: 
-
-* **/layouts** - Templates for different page layouts, such as single column, double column, with a sidebar, etc.
-* **/pages** - Individual pages, such as homepage, login, product details, etc.
-* **/partials** - Templates for individual components, such as header, carousel, tab set, etc.
-
-## Adding components to the Component Library
-
+You can create routes for different request types, such as GET and POST. Your response for a route can be HTML, JSON or just plain text.
 
 ## Documenting your Handlebars templates
 
@@ -101,26 +130,20 @@ So if we take a Handlebars file containing the mark-up for the main header on th
 		</nav>
 	</header>
 
-## Creating a new site
-
-Create a route file for the site inside the *routes* folder.
-
-Create a folder for the site inside the *routes* folder with the same name as the route file you created above. This is where you can keep any routes associated with that site.
-
-Reference the route file inside *lib/setupRoutes.js*.
-
-
 ## Creating a new page for a site
 
 ### Step 1: Create the view
 
-Inside the **views/pages** folder, create a Handlebars (.hbs) file for the page you want to create. Feel free create additional folders here to help organise your pages.
+Inside the **pages** folder, create a Handlebars (.hbs) file for the page you want to create. Feel free create additional folders here to help organise your pages.
 
 Inside the Handlebars file you have created, add whatever mark-up is needed for the page. Remember, this should just be the main content of the page. The header, footer, and any mark-up for the general structure of the page should be contained inside the layout Handlebars file.
 
 ### Step 2: Create the route
 
-Inside the relevant route file for the site, add the following:
+Inside the **routes** folder for the site, create a .routes.js file with the following code:
+
+	var express = require('express');
+	var router = express.Router();
 
 	router.get('/[page-url]', function(req, res, next) {
 		var data = {
@@ -131,7 +154,9 @@ Inside the relevant route file for the site, add the following:
 		res.render('pages/[handlebars-page-name]', data);
 	});
 
+	module.exports = router;
+
 * **[page-url]** - The URL to access this page. This is relevant to the route for the route file you are in. So if the route for the route file is */checkout*, replacing <page-url> with */address* will make the URL for the page */checkout/address*.
 * **[page-title]** - The title of the page that will appear within the `<title>` tag. If you have any text and separators that normally appear after the title for that page, they should ideally be included in the layout template, purely to avoid having to type them out for every page.
-* **[layout]** - This property is optional. The name of the layout to use for this page. If omitted, will use the default layout as defined in the app.js file. 
+* **[layout]** - This property is optional. The name of the layout to use for this page. If omitted, will use the default.hbs layout file. 
 * **[handlebars-page-name]** - The path to the Handlebars file for the page, without the .hbs extension.
