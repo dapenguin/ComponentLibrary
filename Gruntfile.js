@@ -6,22 +6,24 @@
  * @return {String}       The string for running the specified combination.
  */
 var getTask = function(task,alias){
-    if (alias) {
-        task += ':' + alias;
+    if (!alias) {
+        alias = 'default';
     }
+    task += ':' + alias;
+
     return task;
 };
 
 module.exports = function(grunt){
-    //var autoprefixer = require('autoprefixer-core');
-
     require("time-grunt")(grunt);
 
     grunt.initConfig({
         concurrent: {
-            tasks: ['devNodemon','devWatch'],
-            options: {
-                logConcurrentOutput: true
+            default: {
+                tasks: ['devNodemon:default','devWatch:defaultCss'],
+                options: {
+                    logConcurrentOutput: true
+                }
             }
         },
         nodemon: {
@@ -44,51 +46,13 @@ module.exports = function(grunt){
 	    	options: {
 		    	outputStyle: 'nested'
 		    },
-    		dev: {
+    		default: {
 			    files: {
-                    'app/public/css/componentLibrary.css':'src/default/componentLibrary.scss',
-                    'app/public/css/style.css':'src/default/style.scss'
+                    'app/public/css/componentLibrary.css':'src/default/sass/componentLibrary.scss',
+                    'app/public/css/style.css':'src/default/sass/style.scss'
 			    }
 		    }
     	},
-        /*postcss: {
-            options: {
-                processors: [
-                    autoprefixer(
-                        {
-                            browsers: [
-                                'last 20 versions',
-                                'ie >= 9'
-                            ]
-                        }
-                    ).postcss
-                ]
-            },
-            dev: {
-                files: {
-                    'css/main.css':'css/main.css'
-                }
-            }
-        },
-    	cssmin: {
-    		dev: {
-	    		options: {
-					//aggressiveMerging: true,
-					keepBreaks: true,
-					debug: true,
-                    compatibility: {
-                        properties: {
-                            spaceAfterClosingBrace: true,
-                            ieSuffixHack: true
-                        }
-                    }
-	    		},
-    			files: {
-    				'css/main.min.css':['css/main.css'],
-    				'css/main-ie8.min.css':['css/main-ie8.css']
-	    		}
-	    	}
-    	},*/
         bytesize: {
             all: {
                 src: [
@@ -97,29 +61,16 @@ module.exports = function(grunt){
             }
         },
     	watch: {
-    		css: {
-	    		files: ['src/*.scss','src/**/*.scss'],
-	    		tasks: ['buildCss']
+            defaultCss: {
+        		files: ['src/*.scss','src/**/*.scss'],
+        		tasks: ['buildCss:default']
             }
     	}
     });
 
     grunt.registerTask('buildCss', [], function(){
         grunt.loadNpmTasks('grunt-sass');
-        //grunt.loadNpmTasks('grunt-bytesize');
-        //grunt.loadNpmTasks('grunt-contrib-cssmin');
-        //grunt.loadNpmTasks('grunt-postcss');
-        grunt.task.run('sass:dev');
-        //grunt.task.run('postcss');
-        //grunt.task.run('cssmin:dev');
-        //grunt.task.run('bytesize');
-    });
-
-    grunt.registerTask('serve', [], function(){
-        grunt.loadNpmTasks('grunt-http-server');
-        grunt.loadNpmTasks('grunt-contrib-watch');
-        grunt.task.run('http-server');
-        grunt.task.run('watch');
+        grunt.task.run('sass:default');
     });
 
     grunt.registerTask('devNodemon', [], function(alias){
@@ -129,14 +80,18 @@ module.exports = function(grunt){
         grunt.task.run(nodemonTask);
     });
     
-    grunt.registerTask('devWatch', [], function(){
+    grunt.registerTask('devWatch', [], function(alias){
+        var watchTask = getTask('watch',alias);
+
         grunt.loadNpmTasks('grunt-contrib-watch');
-        grunt.task.run('watch');
+        grunt.task.run(watchTask);
     });
 
-    grunt.registerTask('dev', [], function(){
+    grunt.registerTask('dev', [], function(alias){
+        var devTask = getTask('concurrent',alias);
+
         grunt.loadNpmTasks('grunt-concurrent');
-        grunt.task.run('concurrent');
+        grunt.task.run(devTask);
     });
 
     grunt.registerTask('default', []);

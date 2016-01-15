@@ -1,0 +1,18 @@
+body {
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+	color: #00B7FF;
+}
+
+.access {
+	left: -999px;
+	position: absolute;
+	top: -999px;
+}
+
+@import '../components/buttons/buttons';
+@import '../components/header/header';
+@import '../components/footer/footer';
+@import '../components/paginationBar/paginationBar';

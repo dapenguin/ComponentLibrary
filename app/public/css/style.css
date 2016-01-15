@@ -4,6 +4,11 @@ body {
 a {
   color: #00B7FF; }
 
+.access {
+  left: -999px;
+  position: absolute;
+  top: -999px; }
+
 .primaryButton, .secondaryButton, .tertiaryButton {
   background: #639;
   border: 1px solid #639;
@@ -77,13 +82,19 @@ footer {
   padding: .5em 10px; }
 
 .paginationSort {
-  float: left; }
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
   .paginationSort li {
     display: inline-block;
     margin: 0 .25em; }
 
 .paginationPages {
-  float: right; }
+  float: right;
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
   .paginationPages li {
     display: inline-block;
     margin: 0 .25em; }
