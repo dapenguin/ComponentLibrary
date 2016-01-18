@@ -148,7 +148,8 @@ Inside the **routes** folder for the site, create a .routes.js file with the fol
 	router.get('/[page-url]', function(req, res, next) {
 		var data = {
 			title: '[page-title]',
-			layout: '[layout]'
+			layout: '[layout]',
+			[additional-page-data]
 		};
 
 		res.render('pages/[handlebars-page-name]', data);
@@ -159,4 +160,5 @@ Inside the **routes** folder for the site, create a .routes.js file with the fol
 * **[page-url]** - The URL to access this page. This is relevant to the route for the route file you are in. So if the route for the route file is */checkout*, replacing <page-url> with */address* will make the URL for the page */checkout/address*.
 * **[page-title]** - The title of the page that will appear within the `<title>` tag. If you have any text and separators that normally appear after the title for that page, they should ideally be included in the layout template, purely to avoid having to type them out for every page.
 * **[layout]** - This property is optional. The name of the layout to use for this page. If omitted, will use the default.hbs layout file. 
+* **[additional-page-data]** - Any addition data that needs to go on the page. The comments in the .hbs files for the layout/page/components being used should identify what data can be provided.
 * **[handlebars-page-name]** - The path to the Handlebars file for the page, without the .hbs extension.
