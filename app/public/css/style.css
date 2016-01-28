@@ -98,3 +98,29 @@ footer {
   .paginationPages li {
     display: inline-block;
     margin: 0 .25em; }
+
+.productList {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0; }
+
+.productTile {
+  border: 1px solid #ccc;
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  padding: 10px;
+  vertical-align: top;
+  width: 200px; }
+  .productTile .productImage {
+    background: #ccc;
+    border: 1px solid #999;
+    height: 150px;
+    width: 150px; }
+  .productTile .price {
+    font-size: 1.2em;
+    font-weight: bold; }
+
+.productTileName {
+  font-size: 1.4em;
+  margin: 0; }

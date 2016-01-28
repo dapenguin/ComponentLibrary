@@ -62,7 +62,7 @@ module.exports = function(grunt){
         },
     	watch: {
             defaultCss: {
-        		files: ['src/*.scss','src/**/*.scss'],
+        		files: ['src/default/*.scss','src/default/**/*.scss'],
         		tasks: ['buildCss:default']
             }
     	}
