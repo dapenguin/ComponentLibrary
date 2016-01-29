@@ -51,7 +51,17 @@ module.exports = function(grunt){
                     'app/public/css/componentLibrary.css':'src/default/sass/componentLibrary.scss',
                     'app/public/css/style.css':'src/default/sass/style.scss'
 			    }
-		    }
+		    },
+            defaultTest: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/default/components/',
+                    dest: 'app/public/css/components/',
+                    src: '**/*.scss',
+                    ext: '.css',
+                    flatten: true
+                }]
+            }
     	},
         bytesize: {
             all: {
@@ -67,6 +77,7 @@ module.exports = function(grunt){
             }
     	}
     });
+        grunt.loadNpmTasks('grunt-sass');
 
     grunt.registerTask('buildCss', [], function(){
         grunt.loadNpmTasks('grunt-sass');
@@ -88,6 +99,13 @@ module.exports = function(grunt){
     });
 
     grunt.registerTask('dev', [], function(alias){
+        var devTask = getTask('concurrent',alias);
+
+        grunt.loadNpmTasks('grunt-concurrent');
+        grunt.task.run(devTask);
+    });
+
+    grunt.registerTask('test', [], function(alias){
         var devTask = getTask('concurrent',alias);
 
         grunt.loadNpmTasks('grunt-concurrent');
