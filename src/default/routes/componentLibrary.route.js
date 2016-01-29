@@ -51,4 +51,74 @@ router.get('/cl', function(req, res, next) {
 	res.render('pages/componentLibrary/componentLibrary', data);
 });
 
+/* GET component test page. */
+router.get('/componentTest', function(req, res, next) {
+	var headerFiveItems = {
+		siteName: 'Website name',
+		navItems: [
+			{
+				text: 'Products',
+				href: 'plp'
+			},
+			{
+				text: 'Services',
+				href: '#'
+			},
+			{
+				text: 'About us',
+				href: '#'
+			},
+			{
+				text: 'Contact us',
+				href: '#'
+			},
+			{
+				text: 'FAQ',
+				href: '#'
+			}
+		]
+	};
+
+	var headerThreeItems = {
+		siteName: 'Website name',
+		navItems: [
+			{
+				text: 'Products',
+				href: 'plp'
+			},
+			{
+				text: 'Services',
+				href: '#'
+			},
+			{
+				text: 'Contact us',
+				href: '#'
+			}
+		]
+	};
+
+	var headerNoItems = {
+		siteName: 'Website name'
+	};
+
+	var data = {
+		title: 'Component Test',
+		layout: 'componentTesting',
+		partial: 'header',
+		variants: [
+			{
+				data: headerFiveItems
+			},
+			{
+				data: headerThreeItems
+			},
+			{
+				data: headerNoItems
+			}
+		]
+	};
+
+	res.render('pages/componentTest/componentTest', data);
+});
+
 module.exports = router;

@@ -1,0 +1,16 @@
+{{!
+Markup for outputting different variations of a component. This will be used by
+some of our testing and code quality tools.
+Expects the following data:
+
+partial:        The name of the partial we use for rendering the component.
+variants:       An array containing the data for each variation of the component.
+variants.data:  An object containing the data to be passed to the partial for the
+                variation of the component being displayed.
+}}
+
+{{#each variants}}
+	<div class="clComponentBlock">
+		{{{dynamicPartial ../partial data}}}
+	</div>
+{{/each}}
