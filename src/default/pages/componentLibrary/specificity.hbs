@@ -1,0 +1,22 @@
+<script type="text/javascript">
+var cssData = [];
+{{#each cssData}}
+	cssData[{{@index}}] = {{{this}}};
+{{/each}}
+</script>
+<label for="cssFiles">Choose a CSS file:</label>
+<select id="cssFiles">
+	{{#each cssFilesToReport}}
+		<option value="{{@index}}">{{this}}</option>
+	{{/each}}
+</select>
+{{#each cssFilesToReport}}
+	<h2>{{this}}</h2>
+	<svg id="specificityGraph{{@index}}" class="vis" viewbox="0 0 1000 400"></svg>
+{{/each}}
+
+<script type="text/javascript">
+	{{#each cssFilesToReport}}
+		specificityGraph.create(cssData[{{@index}}],{svgSelector:'#specificityGraph{{@index}}'});
+	{{/each}}
+</script>

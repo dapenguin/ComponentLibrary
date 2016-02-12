@@ -1,0 +1,32 @@
+{{!
+Handles any pages that display reporting info.
+
+Data
+====
+title               {String} The text to go into the title tag of the page.
+                             Remember, each page's title should be unique so
+                             that Screen Reader users can distinguish between
+                             them.
+cssFiles            {Array}  A collection of CSS files used on this page.
+cssFiles.src        {String} The location of the CSS file, relative to the CSS
+                             folder.
+javaScriptFiles     {Array}  The ID to be applied to the body tag for the page.
+javaScriptFiles.src {String} The location of the CSS file, relative to the CSS
+                             folder.
+}}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{title}}</title>
+		{{#each cssFiles}}
+			<link rel="stylesheet" href="/css/{{src}}" />
+		{{/each}}
+		{{#each javaScriptFiles}}
+			<script type="text/javascript" src="/js/{{src}}"></script>
+		{{/each}}
+	</head>
+	<body class="clBody">
+		{{{body}}}
+	</body>
+</html>

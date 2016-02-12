@@ -1,3 +1,4 @@
 # Files to always ignore
 node_modules
 npm-debug.log
+app/public/css/components
