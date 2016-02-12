@@ -19,4 +19,12 @@ module.exports = function(hbs){
 
 		return renderPartial();
 	});
+
+	hbs.registerHelper('lineGraph',function(array, width, height){
+		var chartable = require('chartable');
+
+		var html = chartable.lineGraph(array, { width: width, height: height });
+
+		return new hbs.SafeString(html);
+	});
 };

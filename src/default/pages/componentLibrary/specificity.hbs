@@ -1,22 +1,9 @@
-<script type="text/javascript">
-var cssData = [];
+<h1>CSS Statistics</h1>
 {{#each cssData}}
-	cssData[{{@index}}] = {{{this}}};
+	<h2>{{cssFileName}}</h2>
+	<h3>File Size</h3>
+	<p>Size: {{size}}</p>
+	<p>GZip Size: {{gzipSize}}</p>
+	<h3>Specificity Graph</h3>
+	{{lineGraph specificityData 1000 400}}
 {{/each}}
-</script>
-<label for="cssFiles">Choose a CSS file:</label>
-<select id="cssFiles">
-	{{#each cssFilesToReport}}
-		<option value="{{@index}}">{{this}}</option>
-	{{/each}}
-</select>
-{{#each cssFilesToReport}}
-	<h2>{{this}}</h2>
-	<svg id="specificityGraph{{@index}}" class="vis" viewbox="0 0 1000 400"></svg>
-{{/each}}
-
-<script type="text/javascript">
-	{{#each cssFilesToReport}}
-		specificityGraph.create(cssData[{{@index}}],{svgSelector:'#specificityGraph{{@index}}'});
-	{{/each}}
-</script>
