@@ -112,5 +112,13 @@ module.exports = function(grunt){
         grunt.task.run(devTask);
     });
 
+    grunt.registerTask('uncss', [], function(alias){
+        var uncss = require('uncss');
+
+        uncss(['http://localhost/componentTest'],{timeout:1000,report:true},function(error, output){
+            console.log(error,output);
+        });
+    });
+
     grunt.registerTask('default', []);
 };
