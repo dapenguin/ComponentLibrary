@@ -6,8 +6,12 @@ var cssstats = require('cssstats');
 
 router.get('/reports', function(req, res, next) {
 	var data = {
-		title: 'Specificity Report',
+		title: 'CSS Statistics',
 		layout: 'reports',
+		cssFiles: [
+			{src:'style.css'},
+			{src:'componentLibrary.css'}
+		],
 		cssData: []
 	};
 
@@ -20,7 +24,9 @@ router.get('/reports', function(req, res, next) {
 
 	for (;i<il;i++){
 		cssContent = fs.readFileSync(path.join(cssPath,cssFilesToReport[i]),{encoding: 'utf8'});
-		cssFileStats = cssstats(cssContent,{specificityGraph: true});
+		cssFileStats = cssstats(cssContent,{
+			specificityGraph: true
+		});
 
 		data.cssData[i] = {
 			cssFileName: cssFilesToReport[i],
@@ -30,7 +36,7 @@ router.get('/reports', function(req, res, next) {
 		};
 	}
 
-	res.render('pages/componentLibrary/specificity', data);
+	res.render('pages/componentLibrary/cssStats', data);
 });
 
 module.exports = router;

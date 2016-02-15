@@ -1,0 +1,13 @@
+<header class="clLibraryHeader">
+	<h1>CSS Statistics</h1>
+</header>
+<div class="clReportBody">
+	{{#each cssData}}
+		<h2>{{cssFileName}}</h2>
+		<h3>File Size</h3>
+		<p>Size: {{size}} bytes</p>
+		<p>GZip Size: {{gzipSize}} bytes</p>
+		<h3>Specificity Graph</h3>
+		{{lineGraph specificityData 1000 400}}
+	{{/each}}
+</div>

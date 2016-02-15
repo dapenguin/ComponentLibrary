@@ -1,9 +1,0 @@
-<h1>CSS Statistics</h1>
-{{#each cssData}}
-	<h2>{{cssFileName}}</h2>
-	<h3>File Size</h3>
-	<p>Size: {{size}}</p>
-	<p>GZip Size: {{gzipSize}}</p>
-	<h3>Specificity Graph</h3>
-	{{lineGraph specificityData 1000 400}}
-{{/each}}
