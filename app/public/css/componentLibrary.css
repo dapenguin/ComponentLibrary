@@ -46,3 +46,8 @@
 .clComponentDescription {
   border-bottom: 1px solid #999;
   margin: 0 0 10px; }
+
+.clReportBody {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 0 20px 20px; }
