@@ -16,24 +16,26 @@ router.get('/reports', function(req, res, next) {
 	};
 
 	var cssPath = path.join(__dirname,'../../../app/public/css'),
-		cssFilesToReport = [].concat(req.query.css),
+		cssFilesToReport = fs.readdirSync(cssPath),
 		i = 0,
 		il = cssFilesToReport.length,
 		cssContent,
 		cssFileStats;
 
 	for (;i<il;i++){
-		cssContent = fs.readFileSync(path.join(cssPath,cssFilesToReport[i]),{encoding: 'utf8'});
-		cssFileStats = cssstats(cssContent,{
-			specificityGraph: true
-		});
+		if (path.extname(cssFilesToReport[i]) === '.css'){
+			cssContent = fs.readFileSync(path.join(cssPath,cssFilesToReport[i]),{encoding: 'utf8'});
+			cssFileStats = cssstats(cssContent,{
+				specificityGraph: true
+			});
 
-		data.cssData[i] = {
-			cssFileName: cssFilesToReport[i],
-			size: cssFileStats.size,
-			gzipSize: cssFileStats.gzipSize,
-			specificityData: cssFileStats.selectors.specificity.graph
-		};
+			data.cssData[i] = {
+				cssFileName: cssFilesToReport[i],
+				size: cssFileStats.size,
+				gzipSize: cssFileStats.gzipSize,
+				specificityData: cssFileStats.selectors.specificity.graph
+			};
+		}
 	}
 
 	res.render('pages/componentLibrary/cssStats', data);
