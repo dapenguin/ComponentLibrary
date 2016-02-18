@@ -81,4 +81,14 @@ module.exports = function(hbs){
 			return options.inverse(this);
 		}
 	});
+
+	// Simple iterator that loops from the start number to the finish number, and
+	// provides the current index which can be accessed via {{index}}.
+	hbs.registerHelper('for',function(start, finish, options){
+		var output = '';
+		for (var i=start,il=finish; i<=il; i++){
+			output += options.fn({index: i});
+		}
+		return output;
+	});
 };
