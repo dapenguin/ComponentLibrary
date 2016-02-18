@@ -1,16 +1,34 @@
 <div class="paginationBar">
 	<h3 class="access">Sort by options:</h3>
 	<ul class="paginationSort">
-		<li><a href="#">Sort alphabetically</a></li>
-		<li><a href="#">Sort by price</a></li>
+		{{#eq sortOption "alpha"}}
+			<li>Sort alphabetically</li>
+			<li><a href="#">Sort by price</a></li>
+		{{else}}
+			<li><a href="#">Sort alphabetically</a></li>
+			<li>Sort by price</li>
+		{{/eq}}
 	</ul>
 	<h3 class="access">Pages:</h3>
 	<ul class="paginationPages">
-		<li><a href="#">Previous page</a></li>
-		<li><a href="#"><span class="access">Page </span>1</a></li>
-		<li><a href="#"><span class="access">Page </span>2</a></li>
-		<li><a href="#"><span class="access">Page </span>3</a></li>
-		<li><a href="#"><span class="access">Page </span>4</a></li>
-		<li><a href="#">Next page</a></li>
+		{{#eq currentPage 1}}
+			<li>Previous page</li>
+		{{else}}
+			<li><a href="#">Previous page</a></li>
+		{{/eq}}
+
+		{{#for 1 pages}}
+			{{#eq ../currentPage index}}
+				<li><span class="access">Page </span>{{index}}</li>
+			{{else}}
+				<li><a href="#"><span class="access">Page </span>{{index}}</a></li>
+			{{/eq}}
+		{{/for}}
+
+		{{#eq currentPage pages}}
+			<li>Next page</li>
+		{{else}}
+			<li><a href="#">Next page</a></li>
+		{{/eq}}
 	</ul>
 </div>

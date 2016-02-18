@@ -1,9 +1,9 @@
 <header class="clLibraryHeader">
-	<h1>Component Library</h1>
+	<h1>{{title}}</h1>
 </header>
 <main class="clLibraryBody">
 	<nav class="clLibraryMenu">
-		<h2>Contents</h2>
+		<h2>Components</h2>
 
 		{{! Build a menu for jumping to our components }}
 		<ul>
@@ -17,6 +17,6 @@
 
 	{{! Loop through and display our components using the component partial}}
 	{{#each components}}
-		{{> component}}
+		{{> clComponent}}
 	{{/each}}
 </main>

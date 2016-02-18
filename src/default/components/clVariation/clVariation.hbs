@@ -1,0 +1,34 @@
+{{!
+Markup for a variation of a component in our component library.
+
+Data
+====
+id             {String}  A unique identifier for the component. Used in creating
+                         an id for showing code examples.
+index          {Integer} The array index for the variation. Again, used in creating
+                         an id for showing code examples, as well as jump links to
+                         the different variations.
+partial        {String}  The name of the partial we use for rendering the component.
+variationName  {String}  The name of the variation of this component.
+data           {Object}  The data to be passed to the partial for the component
+                         variation being displayed.
+wrapperClass   {String}  Any classes that are needed around the variant. This should
+                         only be used for scenarios such as JavaScript/non-JavaScript
+                         alternatives.
+}}
+
+<div id="{{id}}{{index}}" class="clVariationBlock {{wrapperClass}}">
+	<div class="clVariationHeader">
+		<h3 class="clVariationName">{{variationName}}</h3>
+		<a href="#{{id}}{{index}}_clCode" class="clShowCode">Show code</a>
+	</div>
+
+	{{! Output the mark-up for the component within a code block }}
+	<pre id="{{id}}{{index}}_clCode" class="clCode clCodeHidden">
+	{{#codeBlock this}}
+		{{{dynamicPartial partial data}}}
+	{{/codeBlock}}
+	</pre>
+
+	{{{dynamicPartial partial data}}}
+</div>

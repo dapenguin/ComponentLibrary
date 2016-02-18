@@ -1,10 +1,23 @@
+{{!
+The global footer for the site.
+
+Data
+====
+links            {Array}   Array containing details for each link that appears
+                           in the footer.
+links.url        {String}  The URL the link points to.
+links.linkText   {String}  The text for the link. This can contain HTML.
+links.isExternal {Boolean} Whether or not this link is to an external site.
+                           This is normally used to determine if we need to
+                           open the link in a new window/tab.
+
+}}
 <footer>
 	<ul>
+		{{#each links}}
 		<li>
-			<a href="http://www.twitter.com">Follow us on Twitter</a>
+			<a href="{{url}}"{{#if isExternal}} rel="external"{{/if}}>{{linkText}}</a>
 		</li>
-		<li>
-			<a href="http://www.facebook.com">Like us on Facebook</a>
-		</li>
+		{{/each}}
 	</ul>
 </footer>

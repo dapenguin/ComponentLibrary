@@ -1,0 +1,29 @@
+{{!
+Markup for an individual component in our style guide.
+Expects the following data:
+
+id                        {String} A unique identifier for the component. Main use is for
+                                   creating a location on the page we can jump to.
+name                      {String} The name of the component.
+description               {String} A description of the component.
+partial                   {String} The name of the partial we use for rendering the component.
+variations                {Array}  A collection of the different variations of the component.
+}}
+
+<div id="{{id}}" class="clComponentBlock">
+	<div class="clComponentHeader">
+		<h2 class="clComponentName">{{name}}</h2>
+	</div>
+
+	<div class="clComponentDescription">
+		{{! This description should contain the mark-up needed for styling, hence
+		    why we don't have it wrapped inside a <p> tag.
+		}}
+		{{{description}}}
+	</div>
+
+	{{! Output the partial for the component }}
+	{{#each variations}}
+		{{> clVariation id=../id partial=../partial index=@index}}
+	{{/each}}
+</div>

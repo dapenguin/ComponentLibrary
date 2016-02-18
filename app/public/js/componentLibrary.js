@@ -3,8 +3,8 @@ var CL = CL || {};
 
 CL.codeRevealer = function(){
 	var _config = {
-		codeLinkClass: 'clComponentShowCode',
-		hideClass: 'clHideCode'
+		codeLinkClass: 'clShowCode',
+		hideClass: 'clCodeHidden'
 	};
 
 	var _showCodeClickHandlers = [];
@@ -62,9 +62,9 @@ CL.removeClass = function(ele,cls) {
 (function(){
 	var htmlElement = document.documentElement;
 	// Get rid of the noJs class
-	htmlElement.className = htmlElement.className.replace(/\bnoJs\b/,'');
+	htmlElement.className = htmlElement.className.replace(/\bclNoJs\b/,'');
 	// Add a js class
-	htmlElement.className += ' js';
+	htmlElement.className += ' clJs';
 })();
 
 document.addEventListener('DOMContentLoaded',function(){
