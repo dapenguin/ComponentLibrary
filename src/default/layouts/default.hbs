@@ -20,7 +20,7 @@ headerData  {Object}  Data to be used by the header partial, as defined in
   </head>
   <body {{#if bodyId}}id="{{bodyId}}"{{/if}} {{#if bodyClass}}class="{{bodyClass}}"{{/if}}>
   	{{> header headerData}}
-    {{{body}}}
-    {{> footer}}
+    <main>{{{body}}}</main>
+    {{> footer footerData}}
   </body>
 </html>
