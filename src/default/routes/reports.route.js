@@ -20,7 +20,8 @@ router.get('/reports', function(req, res, next) {
 		i = 0,
 		il = cssFilesToReport.length,
 		cssContent,
-		cssFileStats;
+		cssFileStats,
+		specificityStats;
 
 	for (;i<il;i++){
 		if (path.extname(cssFilesToReport[i]) === '.css'){
@@ -28,12 +29,20 @@ router.get('/reports', function(req, res, next) {
 			cssFileStats = cssstats(cssContent,{
 				specificityGraph: true
 			});
+			specificityStats = cssFileStats.selectors.specificity;
+
+			// fs.writeFileSync(
+			// 	path.join(__dirname,'../../../build/',path.basename(cssFilesToReport[i],'.css')+'.json'),
+			// 	JSON.stringify(cssFileStats)
+			// );
 
 			data.cssData[i] = {
 				cssFileName: cssFilesToReport[i],
 				size: cssFileStats.size,
 				gzipSize: cssFileStats.gzipSize,
-				specificityData: cssFileStats.selectors.specificity.graph
+				specificityData: specificityStats.graph,
+				specificityMax: specificityStats.max,
+				specificityAvg: specificityStats.average
 			};
 		}
 	}
