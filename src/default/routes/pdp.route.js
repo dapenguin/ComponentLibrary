@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var pageDefaultData = require('../data/pageDefaults.data.js');
 var productListData = require('../data/test/productList.js');
 
 var getProductIndex = function(productId){
@@ -18,14 +19,11 @@ var getProductIndex = function(productId){
 
 /* GET home page. */
 router.get('/pdp', function(req, res, next) {
-	var data = {
-		title: 'Product in the catalogue | My shop',
-		bodyId: 'plp',
-		bodyClass: 'plp',
-		headerData: {
-			siteName: 'My Shop'
-		}
-	};
+	var data = Object.create(pageDefaultData);
+
+	data.title = 'Product in the catalogue | My shop';
+	data.bodyId = 'plp';
+	data.bodyClass = 'plp';
 
 	var products = productListData.products;
 
@@ -36,6 +34,7 @@ router.get('/pdp', function(req, res, next) {
 		data.productDesc = products[productIndex].desc;
 		data.productPrice = products[productIndex].price;
 		data.productPromotions = products[productIndex].promotions;
+
 		res.render('pages/pdp/pdp', data);
 	} else {
 		res.send('Product not found');

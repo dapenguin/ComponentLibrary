@@ -11,8 +11,6 @@ router.get('/cl', function(req, res, next) {
 		title: 'Component Library',
 		layout: 'componentLibrary',
 		components: [
-			// tabsData,
-			// regularShopTabsData,
 			headerData,
 			footerData,
 			paginationBarData
