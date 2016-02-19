@@ -1,5 +1,6 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0; }
 
 a {
   color: #00B7FF; }
@@ -8,6 +9,11 @@ a {
   left: -999px;
   position: absolute;
   top: -999px; }
+
+main {
+  margin: 0 auto;
+  max-width: 920px;
+  padding: 20px; }
 
 .primaryButton, .secondaryButton, .tertiaryButton {
   background: #639;
@@ -65,12 +71,13 @@ header {
     color: #fff; }
 
 footer {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #639;
   padding: 1em 0; }
   footer ul {
     list-style-type: none;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    text-align: center; }
   footer li {
     display: inline-block;
     padding: 0 20px; }
@@ -116,11 +123,16 @@ footer {
     background: #ccc;
     border: 1px solid #999;
     height: 150px;
+    margin: 0 auto;
     width: 150px; }
   .productTile .price {
     font-size: 1.2em;
     font-weight: bold; }
 
 .productTileName {
-  font-size: 1.4em;
-  margin: 0; }
+  font-size: 1.143em;
+  margin: 0 0 .75em;
+  text-align: center; }
+  .productTileName a {
+    color: #639;
+    text-decoration: none; }

@@ -10,6 +10,7 @@
 		background: #ccc;
 		border: 1px solid #999;
 		height: 150px;
+		margin: 0 auto;
 		width: 150px;
 	}
 
@@ -20,6 +21,12 @@
 }
 
 .productTileName {
-	font-size: 1.4em;
-	margin: 0;
+	font-size: 1.143em;
+	margin: 0 0 .75em;
+	text-align: center;
+
+	a {
+		color: #639;
+		text-decoration: none;
+	}
 }
