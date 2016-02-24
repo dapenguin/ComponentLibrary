@@ -13,11 +13,17 @@
     text-align: center; }
 
 .clLibraryBody {
+  box-sizing: border-box;
   padding: 10px; }
+  @media (min-width: 1200px) {
+    .clLibraryBody {
+      border-left: 1px solid #ccc;
+      margin-left: 250px; } }
 
 .clLibraryMenu {
   border: 1px solid #ccc;
   border-radius: 10px;
+  box-sizing: border-box;
   margin: 0 0 30px;
   padding: 10px; }
   .clLibraryMenu h2 {
@@ -27,6 +33,12 @@
   .clLibraryMenu li {
     font-size: 1em;
     margin: .25em; }
+  @media (min-width: 1200px) {
+    .clLibraryMenu {
+      border-width: 0;
+      border-radius: 0;
+      float: left;
+      width: 250px; } }
 
 .clCode {
   background: #000;
