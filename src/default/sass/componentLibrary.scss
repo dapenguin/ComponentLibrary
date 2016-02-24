@@ -13,6 +13,15 @@
 // rather use something like .clLink.
 ///////////////////////////////////////////////////////////////////////////////
 
+// Configuration settings
+$useMediaQueries: true;
+$includeIE8Styles: false;
+
+// Useful Mixins
+@import 'utils/IE8Styles';
+@import 'utils/mediaQueries';
+@import 'utils/clearfix';
+
 .clBody {
 	margin: 0;
 	padding: 0;
@@ -32,12 +41,19 @@
 }
 
 .clLibraryBody {
+	box-sizing: border-box;
 	padding: 10px;
+
+	@include minBreakpoint(large){
+		border-left: 1px solid #ccc;
+		margin-left: 250px;
+	}
 }
 
 .clLibraryMenu {
 	border: 1px solid #ccc;
 	border-radius: 10px;
+	box-sizing: border-box;
 	margin: 0 0 30px;
 	padding: 10px;
 
@@ -52,6 +68,13 @@
 	li {
 		font-size: 1em;
 		margin: .25em;
+	}
+
+	@include minBreakpoint(large){
+		border-width: 0;
+		border-radius: 0;
+		float: left;
+		width: 250px;
 	}
 }
 
