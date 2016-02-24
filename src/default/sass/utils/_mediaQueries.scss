@@ -1,0 +1,36 @@
+$mediaQueryMinBreakpoints: (
+  small: 750px,
+  medium: 1000px,
+  large: 1200px
+);
+
+$mediaQueryMaxBreakpoints: (
+  small: 600px,
+  medium: 1250px,
+  large: 1600px
+);
+
+$ieMinBreakpoint: map-get($mediaQueryMinBreakpoints,medium);
+$ieMaxBreakpoint: map-get($mediaQueryMaxBreakpoints,medium);
+
+@mixin minBreakpoint($breakpoint) {
+  $breakpointSize: map-get($mediaQueryMinBreakpoints,$breakpoint);
+
+  @if ($useMediaQueries) {
+    @media (min-width: $breakpointSize) { @content; }
+
+  } @else if ($includeIE8Styles and $breakpointSize <= $ieMinBreakpoint) {
+    @content;
+  }
+}
+
+@mixin maxBreakpoint($breakpoint) {
+  $breakpointSize: map-get($mediaQueryMaxBreakpoints,$breakpoint);
+
+  @if ($useMediaQueries) {
+    @media (max-width: $breakpointSize) { @content; }
+
+  } @else if ($includeIE8Styles and $breakpointSize <= $ieMaxBreakpoint) {
+    @content;
+  }
+}

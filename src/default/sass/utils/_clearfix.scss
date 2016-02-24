@@ -1,0 +1,14 @@
+// Please note: We are only declaring this class so we can extend it for elements
+// that need a clearing solution other than overflow:hidden. DO NOT apply this
+// class to elements in your HTML.
+%clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}

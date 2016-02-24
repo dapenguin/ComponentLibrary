@@ -1,0 +1,5 @@
+@mixin IE8Styles() {
+  @if ($includeIE8Styles) {
+      @content;
+  }
+}
