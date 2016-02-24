@@ -1,3 +1,12 @@
+// Configuration settings
+$useMediaQueries: true;
+$includeIE8Styles: false;
+
+// Useful Mixins
+@import 'utils/IE8Styles';
+@import 'utils/mediaQueries';
+@import 'utils/clearfix';
+
 body {
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 	margin: 0;
