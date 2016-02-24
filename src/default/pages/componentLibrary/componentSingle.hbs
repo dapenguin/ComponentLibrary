@@ -1,24 +1,24 @@
-<header class="clLibraryHeader">
+<div class="clLibraryHeader">
 	<h1>{{title}}</h1>
-</header>
-<main class="clLibraryBody">
-	{{#with component}}
-		<nav class="clLibraryMenu">
-			<h2>Variations</h2>
+</div>
+{{#with component}}
+	<div class="clLibraryMenu">
+		<h2>Variations</h2>
 
-			{{! Build a menu for jumping to our variations }}
-			<ul>
-				{{#each variations}}
-				<li>
-					<a href="#{{../id}}{{@index}}">{{variationName}}</a>
-				</li>
-				{{/each}}
-			</ul>
-		</nav>
+		{{! Build a menu for jumping to our variations }}
+		<ul>
+			{{#each variations}}
+			<li>
+				<a href="#{{../id}}{{@index}}">{{variationName}}</a>
+			</li>
+			{{/each}}
+		</ul>
+	</div>
 
+	<div class="clLibraryBody">
 		{{! Loop through and display our components using the component partial}}
 		{{#each variations}}
 			{{> clVariation id=../id partial=../partial index=@index}}
 		{{/each}}
-	{{/with}}
-</main>
+	</div>
+{{/with}}

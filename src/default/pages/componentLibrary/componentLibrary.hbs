@@ -1,22 +1,22 @@
-<header class="clLibraryHeader">
+<div class="clLibraryHeader">
 	<h1>{{title}}</h1>
-</header>
-<main class="clLibraryBody">
-	<nav class="clLibraryMenu">
-		<h2>Components</h2>
+</div>
+<div class="clLibraryMenu">
+	<h2>Components</h2>
 
-		{{! Build a menu for jumping to our components }}
-		<ul>
-			{{#each components}}
-			<li>
-				<a href="#{{id}}">{{name}}</a>
-			</li>
-			{{/each}}
-		</ul>
-	</nav>
+	{{! Build a menu for jumping to our components }}
+	<ul>
+		{{#each components}}
+		<li>
+			<a href="#{{id}}">{{name}}</a>
+		</li>
+		{{/each}}
+	</ul>
+</div>
 
+<div class="clLibraryBody">
 	{{! Loop through and display our components using the component partial}}
 	{{#each components}}
 		{{> clComponent}}
 	{{/each}}
-</main>
+</div>
