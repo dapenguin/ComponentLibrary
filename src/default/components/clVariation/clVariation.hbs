@@ -17,7 +17,7 @@ wrapperClass   {String}  Any classes that are needed around the variant. This sh
                          alternatives.
 }}
 
-<div id="{{id}}{{index}}" class="clVariationBlock {{wrapperClass}}">
+<div id="{{id}}{{index}}" class="clVariationBlock">
 	<div class="clVariationHeader">
 		<h3 class="clVariationName">{{variationName}}</h3>
 		<a href="#{{id}}{{index}}_clCode" class="clShowCode">Show code</a>
@@ -30,5 +30,7 @@ wrapperClass   {String}  Any classes that are needed around the variant. This sh
 	{{/codeBlock}}
 	</pre>
 
-	{{{dynamicPartial partial data}}}
+	<div class="{{wrapperClass}}">
+		{{{dynamicPartial partial data}}}
+	</div>
 </div>
